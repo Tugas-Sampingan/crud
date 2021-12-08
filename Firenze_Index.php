@@ -31,7 +31,7 @@ include_once ("Firenze_connect.php");
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav justify-content-end">
                 <a class="navbar-brand" href="Firenze_Bookings.php">
-                    <img src="chart.png" width="20" height="20" alt="">
+                    <img src="img/chart.png" width="20" height="20" alt="">
                 </a>
 
                 <li class="nav-item dropdown">
@@ -70,7 +70,7 @@ include_once ("Firenze_connect.php");
                             <div class="card-group">
                                 <div class="card mx-auto">
                                     <img class="card-img-top"
-                                        src="raja ampat.jpg" height="400"
+                                        src="img/raja ampat.jpg" height="400"
                                         alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title" name="nama_lokasi"><b>Raja Ampat,Papua</b></h4>
@@ -92,7 +92,7 @@ include_once ("Firenze_connect.php");
                 </div>
                 <div class="card mx-auto">
                     <form action="" method="POST">
-                        <img class="card-img-top" src="Bromo.png"
+                        <img class="card-img-top" src="img/Bromo.png"
                             height="400" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title" name="nama_lokasi"><b>Gunung Bromo, Malang</b></h5>
@@ -112,7 +112,7 @@ include_once ("Firenze_connect.php");
                 </div>
                 <div class="card mx-auto">
                 <form action="" method="POST">
-                    <img class="card-img-top" src="tanah lot.jpg"
+                    <img class="card-img-top" src="img/tanah lot.jpg"
                         height="400" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title" name="nama_lokasi"><b>Tanah Lot,Bali</b></h5>
