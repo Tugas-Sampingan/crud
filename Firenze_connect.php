@@ -3,7 +3,7 @@
      session_start();
  }
 
- $koneksi = mysqli_connect("localhost:3307", "root", "", "wad_modul4");
+ $koneksi = mysqli_connect("localhost", "root", "", "wad_modul4");
 
  if (!$koneksi){
      echo " <script>
