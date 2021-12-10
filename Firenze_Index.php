@@ -26,7 +26,7 @@ include_once("Firenze_connect.php");
     <script src="js/popper.min.js"></script>
 
     <!-- navbar -->
-    <nav class="navbar" style="background-color: #C8E3D4;">
+    <nav class="navbar" style="background-color: #C8E3D4;" data-toggle="modal" data-target="#profileModal">
         <a class="navbar-brand" href="#">
             EAD TRAVEL
         </a>
@@ -53,6 +53,27 @@ include_once("Firenze_connect.php");
         </div>
 
     </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Created By</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-header">
+                    Nama : Firenze Sukmaning Diefta <br>
+                    NIM  : 1202194019
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL -->
+
     <div class="container">
         <div class="row">
             <div class="col-md-4">
