@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+setcookie('warna', 'Blue Ocean');
 include_once("Firenze_connect.php");
 $selected = mysqli_query($koneksi, "SELECT * FROM user");
 
@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
     }
 }
 
-
+$_SESSION['warna'] = '#9ad7db';
 
 if (isset($_POST['login'])) {
     login($_POST);
@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
 </head>
 <style>
     body {
-        background-color: #F6D7A7
+        background-color: #F6D7A7;
     }
 </style>
 

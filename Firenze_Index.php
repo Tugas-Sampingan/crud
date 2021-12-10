@@ -27,36 +27,61 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
     <script src="js/popper.min.js"></script>
 
     <!-- navbar -->
-    <nav class="navbar" style="background-color: #C8E3D4;">
-        <a class="navbar-brand" href="#">
-            EAD TRAVEL
+    <?php
+    if (isset($_SESSION['nama'])) {
+        $nama = $_SESSION['nama'];
+        echo '<nav class="navbar" style="background-color:' . $_SESSION['warna'] . ';">
+        <a href="Firenze_Index.php">
+            <strong>EAD TRAVEL</strong>
         </a>
         <div class="menu d-flex">
             <a class="navbar-brand" href="Firenze_Bookings.php">
                 <img src="img/chart.png" width="20" height="20" alt="">
             </a>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['nama']; ?>
-                <span style="color: blue">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $nama . '<span style="color: blue">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="Firenze_Profile.php">Profile</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="Firenze_Login.php">Logout</a>
-                <?php
-                if (isset($_SESSION['name'])) {
-                    session_destroy();
-                }
-                ?>
+                <a class="dropdown-item" href="destroysession.php">Logout</a>
             </div>
         </div>
-    </nav>
+        </div>
+    </nav>';
+    } else {
+        echo '<nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: ' . $_SESSION['warna'] . ';">
+        <div class="container-fluid">
+            <h1>
+                <strong>
+                    <a class="navbar-brand" href="Firenze_Index.php">EAD TRAVEL</a>
+                </strong>
+            </h1>
+            <!-- Navbar Home -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Firenze_Register.php">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Firenze_Login.php">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>';
+    }
+    ?>
     <!-- end NAV -->
     <!-- Header -->
-    <div class="card mx-auto" style="width:68rem;">
-        <div class="card-header bg-white align-center mx-center" style="background-color: green;text-align: center;">
-            <h1 class="card-title mt-3 text-center">EAD TRAVEL</h1>
+    <div class="container">
+        <div class="card mx-auto">
+            <div class=" card-header bg-white align-center mx-center" style="background-color: green;text-align: center;">
+                <h1 class="card-title mt-3 text-center">EAD TRAVEL</h1>
+            </div>
         </div>
     </div>
+
     <!-- END HEADER -->
 
     <!-- Card -->
@@ -74,13 +99,23 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
                             <hr>
                             <strong>Rp. <?php echo $row['harga'] ?></strong>
                             <hr>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#pesan<?php echo $row['id_tiket'] ?>">
+                            <?php
+                            $idtiket =  $row['id_tiket'];
+                            if (isset($_SESSION['nama'])) {
+
+                                echo '<button class="btn btn-primary" data-toggle="modal" data-target="#pesan' . $idtiket . '">
+                                    Pesan Tiket
+                                    </button>';
+                            } else {
+                                echo '<button class="btn btn-primary" data-toggle="modal" data-target="#pesan' . $idtiket . '" disabled>
                                 Pesan Tiket
-                            </button>
+                            </button>';
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
-
             <?php
             }
             ?>

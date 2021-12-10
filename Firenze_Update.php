@@ -6,9 +6,14 @@ $nama = $_POST['nama'];
 $no_hp = $_POST['no_hp'];
 $password = $_POST['password'];
 $navb = $_POST['warna_navbar'];
+$kode;
+if ($navb == 'Dark Boba') {
+    $kode = '#1B1E23';
+} else {
+    $kode = '#9ad7db';
+}
 
-$_SESSION['nav'] = $navb;
-
+$_SESSION['warna'] = $kode;
 
 
 $query = "UPDATE user SET 
@@ -21,5 +26,11 @@ $query = "UPDATE user SET
 $result = mysqli_query($koneksi, $query);
 if ($result) {
     $_SESSION['update'] = 'Berhasil Update Profile!';
+    if (isset($_COOKIE['warna'])) {
+        setcookie('warna', $navb);
+    } else {
+        setcookie('warna', 'Blue Ocean');
+    }
+
     header("location:Firenze_profile.php?");
 }

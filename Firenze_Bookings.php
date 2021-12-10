@@ -30,26 +30,52 @@ $result = mysqli_query($koneksi, "SELECT * FROM booking");
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar" style="background-color: #C8E3D4;">
-        <a class="navbar-brand" href="Firenze_Index.php">
+    <?php
+    if (isset($_SESSION['nama'])) {
+        $nama = $_SESSION['nama'];
+        echo '<nav class="navbar" style="background-color:' . $_SESSION['warna'] . ';">
+        <a href="Firenze_Index.php">
             <strong>EAD TRAVEL</strong>
         </a>
         <div class="menu d-flex">
             <a class="navbar-brand" href="Firenze_Bookings.php">
                 <img src="img/chart.png" width="20" height="20" alt="">
             </a>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['username']; ?><span style="color: blue">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $nama . '<span style="color: blue">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="">Profile</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="Firenze_Login.php">Logout</a>
-                <?php
-                session_destroy();
-                ?>
+                <a class="dropdown-item" href="destroysession.php">Logout</a>
             </div>
         </div>
-    </nav>
+        </div>
+    </nav>';
+    } else {
+        echo '<nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: ' . $_SESSION['warna'] . ';">
+        <div class="container-fluid">
+            <h1>
+                <strong>
+                    <a class="navbar-brand" href="Firenze_Index.php">EAD TRAVEL</a>
+                </strong>
+            </h1>
+            <!-- Navbar Home -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Firenze_Register.php">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Firenze_Login.php">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>';
+    }
+    ?>
+
     <?php
     if (isset($_SESSION['sukses'])) {
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
