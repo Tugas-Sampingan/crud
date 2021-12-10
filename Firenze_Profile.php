@@ -2,9 +2,15 @@
 
 include 'Firenze_Connect.php';
 
-$id = $_GET['id'];
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    $result = mysqli_query($koneksi, "SELECT * FROM user WHERE email ='$email'");
+    foreach ($result as $row) {
+        $_SESSION['id_user'] = $row['id'];
+    }
+}
+$id = $_SESSION['id_user'];
 $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
-
 ?>
 
 <html>
@@ -38,73 +44,85 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
             <a class="navbar-brand" href="Firenze_Bookings.php">
                 <img src="img/chart.png" width="20" height="20" alt="">
             </a>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lorem, ipsum dolor
-                <span style="color: blue">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['nama']; ?><span style="color: blue">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="">Profile</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="">Logout</a>
+                <a class="dropdown-item" href="Firenze_Login.php">Logout</a>
+                <?php
+                session_destroy();
+                ?>
             </div>
         </div>
     </nav>
-
     <?php
-        if (mysqli_num_rows($selected) > 0) {
-            while ($row = mysqli_fetch_array($selected)) {
+    if (isset($_SESSION['update'])) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>' . $_SESSION['update'] . '</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+        unset($_SESSION['update']);
+    }
+    ?>
+    <?php
+    if (mysqli_num_rows($selected) > 0) {
+        while ($row = mysqli_fetch_array($selected)) {
     ?>
 
-    <div class="container shadow mt-5 p-5" style="background-color: #ffffff;>
-        <form action="" method="post" enctype="multipart/form-data">
-            <h2 class="text-center">Profile</h2>
-            <div class="form-group mt-3 row">
-                <label class="col-sm-3 col-form-label" for="email"><b>Email</b> </label>
-                <label class="col-sm-9 col-form-label"><?php echo $row['email']; ?></label>
+            <div class="container shadow mt-5 p-5" style="background-color: #ffffff;">
+                <form action="Firenze_Update.php?id=<?= $id ?>" method="post">
+                    <h2 class="text-center">Profile</h2>
+                    <div class="form-group mt-3 row">
+                        <label class="col-sm-3 col-form-label" for="email"><b>Email</b> </label>
+                        <label class="col-sm-9 col-form-label"><?php echo $row['email']; ?></label>
+                    </div>
+                    <div class="form-group mt-3 row">
+                        <label class="col-sm-3 col-form-label" for="nama"><b>Nama</b> </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nama" value=<?php echo $row['nama']; ?> name="nama">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3 row">
+                        <label class="col-sm-3 col-form-label" for="no_hp"><b>Nomor Handphone</b> </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nohp" value=<?php echo $row['no_hp']; ?> name="no_hp">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3 row">
+                        <label class="col-sm-3 col-form-label" for="password"><b>Kata Sandi</b> </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="password" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3 row">
+                        <label class="col-sm-3 col-form-label" for="konfirmasi_password"><b>Konfirmasi Kata Sandi</b> </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="konfirmasi_password" name="konfirmasi_password">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3 row">
+                        <label class="col-sm-3 col-form-label" for="warna_navbar"><b>Warna Navbar</b> </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="warna_navbar" value="" name="warna_navbar">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <center>
+                            <input type="submit" class="btn btn-primary" name="simpan" value="Simpan">
+                            <a href="Firenze_Index.php?" type="button" class="btn btn-warning">Cancel</a>
+                        </center>
+                    </div>
+                </form>
             </div>
-            <div class="form-group mt-3 row">
-                <label class="col-sm-3 col-form-label" for="nama"><b>Nama</b> </label>
-                <div class="col-sm-9">
-                    <input type="email" class="form-control" id="nama" value=<?php echo $row['nama']; ?> name="nama">
-                </div>
-            </div>
-            <div class="form-group mt-3 row">
-                <label class="col-sm-3 col-form-label" for="nohp"><b>Nomor Handphone</b> </label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="nohp" value=<?php echo $row['no_hp']; ?> name="nohp">
-                </div>
-            </div>
-            <div class="form-group mt-3 row">
-                <label class="col-sm-3 col-form-label" for="password"><b>Kata Sandi</b> </label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="password" name="password">
-                </div>
-            </div>
-            <div class="form-group mt-3 row">
-                <label class="col-sm-3 col-form-label" for="konfirmasi_password"><b>Konfirmasi Kata Sandi</b> </label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="konfirmasi_password" name="konfirmasi_password">
-                </div>
-            </div>
-            <div class="form-group mt-3 row">
-                <label class="col-sm-3 col-form-label" for="warna_navbar"><b>Warna Navbar</b> </label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="warna_navbar" value="" name="warna_navbar">
-                </div>
-            </div>
-            <div class="form-group mt-3">
-                <center>
-                    <input type="submit" class="btn btn-primary" name="simpan" value="Simpan">
-                    <a href="Firenze_Index.php?" type="button" class="btn btn-warning">Cancel</a>
-                </center>
-            </div>
-        </form>
-    </div>
-<?php
+    <?php
         }
-   }
-?>
-        <!-- footer -->
-        <footer class=" mt-4" data-toggle="modal" data-target="#profileModal">
+    }
+    ?>
+    <!-- footer -->
+    <footer class=" mt-4" data-toggle="modal" data-target="#profileModal">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -1,3 +1,8 @@
+<?php
+session_start();
+$koneksi = mysqli_connect("localhost", "root", "", "wad_modul4");
+$result = mysqli_query($koneksi, "SELECT * FROM booking");
+?>
 <html>
 
 <head>
@@ -26,24 +31,36 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar" style="background-color: #C8E3D4;">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="Firenze_Index.php">
             <strong>EAD TRAVEL</strong>
         </a>
         <div class="menu d-flex">
             <a class="navbar-brand" href="Firenze_Bookings.php">
                 <img src="img/chart.png" width="20" height="20" alt="">
             </a>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lorem, ipsum dolor
-                <span style="color: blue">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['username']; ?><span style="color: blue">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="">Profile</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="">Logout</a>
+                <a class="dropdown-item" href="Firenze_Login.php">Logout</a>
+                <?php
+                session_destroy();
+                ?>
             </div>
         </div>
     </nav>
-
+    <?php
+    if (isset($_SESSION['sukses'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+        unset($_SESSION["sukses"]);
+    }
+    ?>
     <!-- Data Book -->
     <div class="container mt-5">
         <table class="table table-striped" style="background-color: white;">
@@ -58,13 +75,31 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                $index = 1;
+                $total = 0;
+                foreach ($result as $row) {
+                ?>
+                    <tr>
+                        <th scope="row"><?= $index ?></th>
+                        <td><?= $row['nama_tempat'] ?></td>
+                        <td><?= $row['lokasi'] ?></td>
+                        <td><?= $row['tanggal'] ?></td>
+                        <td>RP. <?= $row['harga'] ?></td>
+                        <td><a href="Firenze_hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger">Hapus</a></td>
+                    </tr>
+                <?php
+                    $total = $total + (int)$row['harga'];
+                    $index++;
+                }
+                ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td><a href="" class="btn btn-danger">Hapus</a></td>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>RP. <?= $total ?></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

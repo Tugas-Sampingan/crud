@@ -35,13 +35,18 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
             <a class="navbar-brand" href="Firenze_Bookings.php">
                 <img src="img/chart.png" width="20" height="20" alt="">
             </a>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lorem, ipsum dolor
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['nama']; ?>
                 <span style="color: blue">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="">Profile</a>
+                <a class="dropdown-item" href="Firenze_Profile.php">Profile</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="">Logout</a>
+                <a class="dropdown-item" href="Firenze_Login.php">Logout</a>
+                <?php
+                if (isset($_SESSION['name'])) {
+                    session_destroy();
+                }
+                ?>
             </div>
         </div>
     </nav>
@@ -57,56 +62,58 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
     <!-- Card -->
     <div class="container">
         <div class="row">
-        <?php
-        if (mysqli_num_rows($selected) > 0) {
-            while ($row = mysqli_fetch_array($selected)) {
-        ?>
-            <div class="col-md-4">
-                <div class="card">
-                <img class="card-img-top" src="img/<?php echo $row['gambar'].'.jpg' ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $row['nama'].', '.$row['tempat'] ?></h5>
-                    <p class="card-text"><?php echo $row['deskripsi'] ?></p>
-                    <hr>
-                    <strong>Rp. <?php echo $row['harga'] ?></strong>
-                    <hr>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pesan<?php echo $row['nama']?>">Pesan Tiket</a>
+            <?php
+            foreach ($selected as $row) {
+            ?>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="img/<?php echo $row['gambar'] . '.jpg' ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row['nama'] . ', ' . $row['tempat'] ?></h5>
+                            <p class="card-text"><?php echo $row['deskripsi'] ?></p>
+                            <hr>
+                            <strong>Rp. <?php echo $row['harga'] ?></strong>
+                            <hr>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#pesan<?php echo $row['id_tiket'] ?>">
+                                Pesan Tiket
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-            <?php }
-        }
-        ?>
+
+            <?php
+            }
+            ?>
         </div>
     </div>
     <!-- END CARD -->
 
+    <!-- The Modal -->
+    <!-- MODAL PESAN -->
     <?php
-    if (mysqli_num_rows($selected) > 0) {
-            while ($row = mysqli_fetch_array($selected)) {
-        ?>
-            <form method="post" action="Firenzi_tambahkan.php?id=<?php echo $row['id']?>">
-                <!-- The Modal -->
-                <!-- MODAL PESAN -->
-                <div class="modal" id="pesan<?php echo $row['nama']?>">
-                <div class="modal-dialog">
+    foreach ($selected as $row) {
+    ?>
+        <form method="post" action="Firenze_tambahkan.php?id=<?php echo $row['id_tiket'] ?>">
+            <div class="modal fade" id="pesan<?php echo $row['id_tiket'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-body">
+                        <div class="modal-header">
                             <p>Tanggal Perjalanan.</p>
                             <input type="date" name="tanggal" style="width: 100%;" class="p-2">
+
                         </div>
                         <div class=" modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Tambahkan</button>
+                            <button type="submit" class="btn btn-primary" name="tambah">Tambahkan</button>
                         </div>
-                        
                     </div>
                 </div>
-            </form>
-            <!-- END MODAL PESAN -->
-            <?php }
-        }
-        ?>
+            </div>
+        </form>
+    <?php
+    }
+    ?>
+    <!-- END MODAL PESAN -->
 
 
     <!-- MODAL PROFILE -->
@@ -148,41 +155,3 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
 </body>
 
 </html>
-
-<?php
-// $harga;
-// $namaTempat;
-// $lokasi;
-
-
-// if (isset($_POST['tanggal'])) {
-//     if (isset($_POST['add'])) {
-//         $tanggal = $_POST['tanggal'];
-//         switch ($_POST['tambah']) {
-//             case 'raja_ampat':
-//                 $harga = 7000000;
-//                 $namaTempat = 'Raja Ampat';
-//                 $lokasi = 'Papua';
-//                 echo $harga . $namaTempat . $lokasi . $tanggal;
-//                 break;
-//             case 'bromo':
-//                 $harga = 2000000;
-//                 $namaTempat = 'Bromo';
-//                 $lokasi = 'Malang';
-//                 echo $harga . $namaTempat . $lokasi . $tanggal;
-//                 break;
-//             default:
-//                 $harga = 5000000;
-//                 $namaTempat = 'Tanah Lot';
-//                 $lokasi = 'Bali';
-//                 echo $harga . $namaTempat . $lokasi . $tanggal;
-//                 break;
-//         }
-//     }
-// }
-
-
-
-
-// echo $harga.$namaTempat.$lokasi.$tanggal;
-?>
