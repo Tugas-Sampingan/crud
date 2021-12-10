@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("Firenze_connect.php");
+$koneksi = mysqli_connect("localhost", "root", "", "wad_modul4");
 ?>
 
 <html>
@@ -44,17 +44,55 @@ include_once("Firenze_connect.php");
             </div>
         </div>
     </nav>
+    <!-- end NAV -->
+    <!-- Header -->
     <div class="card mx-auto" style="width:68rem;">
-
         <div class="card-header bg-white align-center mx-center" style="background-color: green;text-align: center;">
-
             <h1 class="card-title mt-3 text-center">EAD TRAVEL</h1>
+        </div>
+    </div>
+    <!-- END HEADER -->
 
+
+
+    <!-- Card -->
+    <form action="" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+
+            </div>
+        </div>
+        <!-- END CARD -->
+        <!-- The Modal -->
+        <!-- MODAL PESAN -->
+        <div class="modal" id="pesan">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Created By</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-header">
+                        Nama : Firenze Sukmaning Diefta <br>
+                        NIM : 1202194019
+                        <?php
+                        if (isset($_POST['tambah'])) {
+                            echo $_POST['tambah'];
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
 
-    </div>
-
-    <!-- The Modal -->
+    </form>
+    <!-- END MODAL PESAN -->
+    <!-- MODAL PROFILE -->
     <div class="modal" id="profileModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,93 +110,9 @@ include_once("Firenze_connect.php");
             </div>
         </div>
     </div>
-
-    <div class="modal" id="pesan">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="" method="post">
-                    <div class="modal-body">
-                        <p>Tanggal Perjalanan.</p>
-                        <input type="date" name="tanggal" style="width: 100%;" class="p-2">
-                    </div>
-                    <div class=" modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" name="add">Tambahkan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <!-- END MODAL PROFILE -->
     <!-- END MODAL -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card-group">
-                    <div class="card mx-auto">
-                        <img class="card-img-top" src="img/raja ampat.jpg" height="400" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title" name="nama_lokasi"><b>Raja Ampat,Papua</b></h4>
-                            <p class="card-text">Kepulauan Raja Ampat berada di bagian paling barat Papua dan membentang di area seluas kurang lebih 4,6 juta hektar.
-                                Kabupaten Raja Ampat terdiri dari 4 pulau besar yaitu Pulau Waigeo, Batanta, Salawati dan Misool, dan 1.847 pulau-pulau kecil lainnya.</p>
 
-                            <div class="card-footer bg-white text-left">
-                            </div>
-                            <p class="card-text" name="harga">Rp7.000.000</p>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="raja_ampat" name="tambah">Tambah Ke Keranjang
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-group">
-                    <div class="card mx-auto">
-                        <img class="card-img-top" src="img/Bromo.png" height="400" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title" name="nama_lokasi"><b>Gunung Bromo, Malang</b></h4>
-                            <p class="card-text">
-                                Gunung Bromo adalah salah satu gunung api yang masih aktif di Indonesia.
-                                Gunung yang memiliki ketinggian 2.392 meter di atas permukaan laut ini merupakan destinasi andalan Jawa Timur.
-                                Gunung Bromo berdiri gagah dikelilingi kaldera atau lautan pasir seluas 10 kilometer persegi.
-                            </p>
-
-                            <div class="card-footer bg-white text-left">
-                            </div>
-                            <p class="card-text" name="harga">Rp2.000.000</p>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="bromo" name="tambah">Tambah Ke Keranjang
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-group">
-                    <div class="card mx-auto">
-                        <img class="card-img-top" src="img/tanah lot.jpg" height="400" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title" name="nama_lokasi"><b>Tanah Lot,Bali</b></h4>
-                            <p class="card-text">
-                                Tanah Lot salah satu pura penting bagi umat Hindu Bali dan lokasi pura terletak di atas batu besar yang berada di lepas pantai.
-                                Pura Tanah Lot merupakan ikon pariwisata pulau Bali.
-                            </p>
-
-                            <div class="card-footer bg-white text-left">
-                            </div>
-                            <p class="card-text" name="harga">Rp5.000.000</p>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="tanah_lot" name="tambah"> Tambah Ke Keranjang
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- footer -->
     <footer class=" mt-4" data-toggle="modal" data-target="#profileModal">
         <div class="container-fluid">
@@ -173,36 +127,45 @@ include_once("Firenze_connect.php");
             </nav>
         </div>
     </footer>
+
 </body>
 
 </html>
 
 <?php
-$harga;
-$namaTempat;
-$lokasi;
-$tanggal = date('Y-m-d', strtotime($_POST['tanggal']));
+// $harga;
+// $namaTempat;
+// $lokasi;
 
-switch ($_POST['tambah']) {
-    case 'raja_ampat':
-        $harga = 7000000;
-        $namaTempat = 'Raja Ampat';
-        $lokasi = 'Papua';
-        echo $harga . $namaTempat . $lokasi . $tanggal;
-        break;
-    case 'bromo':
-        $harga = 2000000;
-        $namaTempat = 'Bromo';
-        $lokasi = 'Malang';
-        echo $harga . $namaTempat . $lokasi . $tanggal;
-        break;
-    default:
-        $harga = 5000000;
-        $namaTempat = 'Tanah Lot';
-        $lokasi = 'Bali';
-        echo $harga . $namaTempat . $lokasi . $tanggal;
-        break;
-}
+
+// if (isset($_POST['tanggal'])) {
+//     if (isset($_POST['add'])) {
+//         $tanggal = $_POST['tanggal'];
+//         switch ($_POST['tambah']) {
+//             case 'raja_ampat':
+//                 $harga = 7000000;
+//                 $namaTempat = 'Raja Ampat';
+//                 $lokasi = 'Papua';
+//                 echo $harga . $namaTempat . $lokasi . $tanggal;
+//                 break;
+//             case 'bromo':
+//                 $harga = 2000000;
+//                 $namaTempat = 'Bromo';
+//                 $lokasi = 'Malang';
+//                 echo $harga . $namaTempat . $lokasi . $tanggal;
+//                 break;
+//             default:
+//                 $harga = 5000000;
+//                 $namaTempat = 'Tanah Lot';
+//                 $lokasi = 'Bali';
+//                 echo $harga . $namaTempat . $lokasi . $tanggal;
+//                 break;
+//         }
+//     }
+// }
+
+
+
 
 // echo $harga.$namaTempat.$lokasi.$tanggal;
 ?>
