@@ -66,9 +66,24 @@ include_once("Firenze_connect.php");
                 </div>
                 <div class="modal-header">
                     Nama : Firenze Sukmaning Diefta <br>
-                    NIM  : 1202194019
+                    NIM : 1202194019
                 </div>
-                
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="pesan">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Tanggal Perjalanan.</p>
+                    <input type="date" name="tanggal" style="width: 100%;" class="p-2">
+                </div>
+                <div class=" modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Tambahkan</button>
+                </div>
             </div>
         </div>
     </div>
@@ -90,7 +105,7 @@ include_once("Firenze_connect.php");
                             <p class="card-text" name="harga">Rp7.000.000</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah">Tambah Ke Keranjang
+                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="raja_ampat">Tambah Ke Keranjang
                             </button>
                         </div>
                     </div>
@@ -113,7 +128,7 @@ include_once("Firenze_connect.php");
                             <p class="card-text" name="harga">Rp2.000.000</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah">Tambah Ke Keranjang
+                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="gunung">Tambah Ke Keranjang
                             </button>
                         </div>
                     </div>
@@ -135,7 +150,7 @@ include_once("Firenze_connect.php");
                             <p class="card-text" name="harga">Rp5.000.000</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah">Tambah Ke Keranjang
+                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="raja_ampat"> Tambah Ke Keranjang
                             </button>
                         </div>
                     </div>
@@ -145,7 +160,7 @@ include_once("Firenze_connect.php");
     </div>
 
     <!-- footer -->
-    <footer class="mt-4" data-toggle="modal" data-target="#profileModal">
+    <footer class=" mt-4" data-toggle="modal" data-target="#profileModal">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
