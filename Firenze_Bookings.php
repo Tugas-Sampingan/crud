@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>INDEX - MODUL4 FIRENZE</title>
+</head>
+<style>
+    body {
+        background-color: #F6D7A7
+    }
+
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" style="background-color: #C8E3D4;">
+        <a class="navbar-brand" href="#">
+            <strong>EAD TRAVEL</strong>
+        </a>
+        <div class="menu d-flex">
+            <a class="navbar-brand" href="Firenze_Bookings.php">
+                <img src="img/chart.png" width="20" height="20" alt="">
+            </a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lorem, ipsum dolor
+                <span style="color: blue">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Data Book -->
+    <div class="container mt-5">
+        <table class="table table-striped" style="background-color: white;">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Tmepat</th>
+                    <th scope="col">Lokasi</th>
+                    <th scope="col">Tanggal Perjalanan</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td><a href="" class="btn btn-danger">Hapus</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- footer -->
+    <footer class="mt-4">
+        <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: auto;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"> <b>©2021 Copyright : Firenze_1202194019</b></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+</body>
+
+</html>
