@@ -1,6 +1,10 @@
 <?php
-session_start();
-include_once("Firenze_connect.php");
+
+include 'Firenze_Connect.php';
+
+$id = $_GET['id'];
+$selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
+
 ?>
 
 <html>
@@ -45,35 +49,40 @@ include_once("Firenze_connect.php");
         </div>
     </nav>
 
-<div class="container shadow mt-5 p-5" style="background-color: #ffffff;>
+    <?php
+        if (mysqli_num_rows($selected) > 0) {
+            while ($row = mysqli_fetch_array($selected)) {
+    ?>
+
+    <div class="container shadow mt-5 p-5" style="background-color: #ffffff;>
         <form action="" method="post" enctype="multipart/form-data">
             <h2 class="text-center">Profile</h2>
             <div class="form-group mt-3 row">
                 <label class="col-sm-3 col-form-label" for="email"><b>Email</b> </label>
-                <label class="col-sm-9 col-form-label">tes@gmail.com</label>
+                <label class="col-sm-9 col-form-label"><?php echo $row['email']; ?></label>
             </div>
             <div class="form-group mt-3 row">
                 <label class="col-sm-3 col-form-label" for="nama"><b>Nama</b> </label>
                 <div class="col-sm-9">
-                    <input type="email" class="form-control" id="nama" value="" name="nama">
+                    <input type="email" class="form-control" id="nama" value=<?php echo $row['nama']; ?> name="nama">
                 </div>
             </div>
             <div class="form-group mt-3 row">
                 <label class="col-sm-3 col-form-label" for="nohp"><b>Nomor Handphone</b> </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="nohp" value="" name="nohp">
+                    <input type="text" class="form-control" id="nohp" value=<?php echo $row['no_hp']; ?> name="nohp">
                 </div>
             </div>
             <div class="form-group mt-3 row">
                 <label class="col-sm-3 col-form-label" for="password"><b>Kata Sandi</b> </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="password" value="" name="password">
+                    <input type="text" class="form-control" id="password" name="password">
                 </div>
             </div>
             <div class="form-group mt-3 row">
                 <label class="col-sm-3 col-form-label" for="konfirmasi_password"><b>Konfirmasi Kata Sandi</b> </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="konfirmasi_password" value="" name="konfirmasi_password">
+                    <input type="text" class="form-control" id="konfirmasi_password" name="konfirmasi_password">
                 </div>
             </div>
             <div class="form-group mt-3 row">
@@ -85,12 +94,15 @@ include_once("Firenze_connect.php");
             <div class="form-group mt-3">
                 <center>
                     <input type="submit" class="btn btn-primary" name="simpan" value="Simpan">
-                    <button type="button" class="btn btn-warning">Cancel</button>
+                    <a href="Firenze_Index.php?" type="button" class="btn btn-warning">Cancel</a>
                 </center>
             </div>
         </form>
     </div>
-
+<?php
+        }
+   }
+?>
         <!-- footer -->
         <footer class=" mt-4" data-toggle="modal" data-target="#profileModal">
         <div class="container-fluid">
