@@ -3,7 +3,7 @@ session_start();
 
 include_once("Firenze_connect.php");
 
-if (isset($_POST['registered'])) { //mulai session
+if (isset($_POST['registered'])) { // mulai session
     registrasi($_POST);
 }
 ?>
