@@ -26,7 +26,7 @@ include_once("Firenze_connect.php");
     <script src="js/popper.min.js"></script>
 
     <!-- navbar -->
-    <nav class="navbar" style="background-color: #C8E3D4;" data-toggle="modal" data-target="#profileModal">
+    <nav class="navbar" style="background-color: #C8E3D4;">
         <a class="navbar-brand" href="#">
             EAD TRAVEL
         </a>
@@ -145,7 +145,7 @@ include_once("Firenze_connect.php");
     </div>
 
     <!-- footer -->
-    <footer class="mt-4">
+    <footer class="mt-4" data-toggle="modal" data-target="#profileModal">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
