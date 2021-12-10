@@ -1,6 +1,7 @@
 <?php
 session_start();
 $koneksi = mysqli_connect("localhost", "root", "", "wad_modul4");
+$selected = mysqli_query($koneksi, "SELECT * FROM tiket");
 ?>
 
 <html>
@@ -53,45 +54,61 @@ $koneksi = mysqli_connect("localhost", "root", "", "wad_modul4");
     </div>
     <!-- END HEADER -->
 
-
-
     <!-- Card -->
-    <form action="" method="post">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-
+    <div class="container">
+        <div class="row">
+        <?php
+        if (mysqli_num_rows($selected) > 0) {
+            while ($row = mysqli_fetch_array($selected)) {
+        ?>
+            <div class="col-md-4">
+                <div class="card">
+                <img class="card-img-top" src="img/<?php echo $row['gambar'].'.jpg' ?>" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['nama'].', '.$row['tempat'] ?></h5>
+                    <p class="card-text"><?php echo $row['deskripsi'] ?></p>
+                    <hr>
+                    <strong>Rp. <?php echo $row['harga'] ?></strong>
+                    <hr>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pesan<?php echo $row['nama']?>">Pesan Tiket</a>
                 </div>
-
-            </div>
-        </div>
-        <!-- END CARD -->
-        <!-- The Modal -->
-        <!-- MODAL PESAN -->
-        <div class="modal" id="pesan">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Created By</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-header">
-                        Nama : Firenze Sukmaning Diefta <br>
-                        NIM : 1202194019
-                        <?php
-                        if (isset($_POST['tambah'])) {
-                            echo $_POST['tambah'];
-                        }
-                        ?>
-                    </div>
                 </div>
             </div>
+            <?php }
+        }
+        ?>
         </div>
+    </div>
+    <!-- END CARD -->
 
-    </form>
-    <!-- END MODAL PESAN -->
+    <?php
+    if (mysqli_num_rows($selected) > 0) {
+            while ($row = mysqli_fetch_array($selected)) {
+        ?>
+            <form method="post" action="Firenzi_tambahkan.php?id=<?php echo $row['id']?>">
+                <!-- The Modal -->
+                <!-- MODAL PESAN -->
+                <div class="modal" id="pesan<?php echo $row['nama']?>">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Tanggal Perjalanan.</p>
+                            <input type="date" name="tanggal" style="width: 100%;" class="p-2">
+                        </div>
+                        <div class=" modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Tambahkan</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+            <!-- END MODAL PESAN -->
+            <?php }
+        }
+        ?>
+
+
     <!-- MODAL PROFILE -->
     <div class="modal" id="profileModal">
         <div class="modal-dialog">
