@@ -76,19 +76,20 @@ include_once("Firenze_connect.php");
     <div class="modal" id="pesan">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body">
-                    <p>Tanggal Perjalanan.</p>
-                    <input type="date" name="tanggal" style="width: 100%;" class="p-2">
-                </div>
-                <div class=" modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Tambahkan</button>
-                </div>
+                <form action="" method="post">
+                    <div class="modal-body">
+                        <p>Tanggal Perjalanan.</p>
+                        <input type="date" name="tanggal" style="width: 100%;" class="p-2">
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" name="add">Tambahkan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <!-- END MODAL -->
-
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -105,7 +106,7 @@ include_once("Firenze_connect.php");
                             <p class="card-text" name="harga">Rp7.000.000</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="raja_ampat">Tambah Ke Keranjang
+                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="raja_ampat" name="tambah">Tambah Ke Keranjang
                             </button>
                         </div>
                     </div>
@@ -128,7 +129,7 @@ include_once("Firenze_connect.php");
                             <p class="card-text" name="harga">Rp2.000.000</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="gunung">Tambah Ke Keranjang
+                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="bromo" name="tambah">Tambah Ke Keranjang
                             </button>
                         </div>
                     </div>
@@ -150,7 +151,7 @@ include_once("Firenze_connect.php");
                             <p class="card-text" name="harga">Rp5.000.000</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="raja_ampat"> Tambah Ke Keranjang
+                            <button class="btn btn-primary btn-block" role="button" type="submit" name="tambah" data-toggle="modal" data-target="#pesan" value="tanah_lot" name="tambah"> Tambah Ke Keranjang
                             </button>
                         </div>
                     </div>
@@ -158,7 +159,6 @@ include_once("Firenze_connect.php");
             </div>
         </div>
     </div>
-
     <!-- footer -->
     <footer class=" mt-4" data-toggle="modal" data-target="#profileModal">
         <div class="container-fluid">
@@ -176,3 +176,33 @@ include_once("Firenze_connect.php");
 </body>
 
 </html>
+
+<?php
+$harga;
+$namaTempat;
+$lokasi;
+$tanggal = date('Y-m-d', strtotime($_POST['tanggal']));
+
+switch ($_POST['tambah']) {
+    case 'raja_ampat':
+        $harga = 7000000;
+        $namaTempat = 'Raja Ampat';
+        $lokasi = 'Papua';
+        echo $harga . $namaTempat . $lokasi . $tanggal;
+        break;
+    case 'bromo':
+        $harga = 2000000;
+        $namaTempat = 'Bromo';
+        $lokasi = 'Malang';
+        echo $harga . $namaTempat . $lokasi . $tanggal;
+        break;
+    default:
+        $harga = 5000000;
+        $namaTempat = 'Tanah Lot';
+        $lokasi = 'Bali';
+        echo $harga . $namaTempat . $lokasi . $tanggal;
+        break;
+}
+
+// echo $harga.$namaTempat.$lokasi.$tanggal;
+?>
