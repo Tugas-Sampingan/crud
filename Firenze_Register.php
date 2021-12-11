@@ -28,7 +28,7 @@ if (isset($_POST['registered'])) { // mulai session
 
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
-        <div class="container-fluid">
+        <div class="container">
             <h1>
                 <strong>
                     <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
@@ -52,8 +52,8 @@ if (isset($_POST['registered'])) { // mulai session
     <?php if (isset($_SESSION['registered'])) : ?>
         <div class='alert alert-warning alert-dismissible fade show fade in' role='alert'>
             <?= $_SESSION['registered']; ?>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
         </div>
 
@@ -126,7 +126,7 @@ if (isset($_POST['registered'])) { // mulai session
             </nav>
         </div>
     </footer>
-    
+
 </body>
 
 </html>

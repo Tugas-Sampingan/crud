@@ -51,8 +51,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
         </div>
         </div
         </div>
-        <br>
-    </nav>';
+    </nav><br>';
     } else {
         echo '<nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: ' . $_SESSION['warna'] . ';">
         <div class="container-fluid">
@@ -74,11 +73,23 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
                 </li>
             </ul>
         </div>
-        <br>
-    </nav>';
+    </nav><br>';
     }
     ?>
     <!-- end NAV -->
+
+    <?php if (isset($_SESSION['message'])) : ?>
+    <div class='alert alert-warning alert-dismissible fade show fade in' role='alert'>
+        <?= $_SESSION['message']; ?>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>
+
+    <?php
+        unset($_SESSION['message']);
+    endif;
+    ?>
 
     <!-- Header -->
     <div class="container">
@@ -98,7 +109,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
             ?>
                 <div class="col-md-4">
                     <div class="card h-100">
-                        <img class="card-img-top" src="img/<?php echo $row['gambar'] . '.jpg' ?>" alt="Card image cap" height="300">
+                        <img class="card-img-top" src="img/<?php echo $row['gambar'] . '.jpg' ?>" alt="Card image cap" height="250">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['nama'] . ', ' . $row['tempat'] ?></h5>
                             <p class="card-text"><?php echo $row['deskripsi'] ?></p>

@@ -83,7 +83,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM booking");
     <?php
     if (isset($_SESSION['sukses'])) {
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <strong>Berhasil dihapus!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -147,7 +147,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM booking");
             </div>
         </nav>
     </footer>
-    
+
 </body>
 
 </html>

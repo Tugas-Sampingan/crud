@@ -66,8 +66,8 @@ if (isset($_POST['login'])) {
     <?php if (isset($_SESSION['message'])) : ?>
         <div class='alert alert-warning alert-dismissible fade show fade in' role='alert'>
             <?= $_SESSION['message']; ?>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
         </div>
 
@@ -79,8 +79,8 @@ if (isset($_POST['login'])) {
     <?php if (isset($_SESSION['registered'])) : ?>
         <div class='alert alert-warning alert-dismissible fade show fade in' role='alert'>
             <?= $_SESSION['registered']; ?>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
         </div>
 
