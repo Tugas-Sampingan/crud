@@ -40,9 +40,12 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
     if (isset($_SESSION['nama'])) {
         $nama = $_SESSION['nama'];
         echo '<nav class="navbar" style="background-color:' . $_SESSION['warna'] . ';">
-        <a href="Firenze_Index.php">
-            <strong>EAD TRAVEL</strong>
-        </a>
+        <div class="container">
+        <h1>
+            <strong>
+                <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
+            </strong>
+        </h1>
         <div class="menu d-flex">
             <a class="navbar-brand" href="Firenze_Bookings.php">
                 <img src="img/chart.png" width="20" height="20" alt="">
@@ -56,13 +59,14 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
             </div>
         </div>
         </div>
+        </div>
     </nav>';
     } else {
         echo '<nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: ' . $_SESSION['warna'] . ';">
         <div class="container-fluid">
             <h1>
                 <strong>
-                    <a class="navbar-brand" href="Firenze_Index.php">EAD TRAVEL</a>
+                    <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
                 </strong>
             </h1>
             <!-- Navbar Home -->

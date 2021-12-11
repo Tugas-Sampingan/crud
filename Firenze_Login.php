@@ -41,10 +41,10 @@ if (isset($_POST['login'])) {
 
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
-        <div class="container-fluid">
+        <div class="container">
             <h1>
                 <strong>
-                    <a class="navbar-brand" href="Firenze_Index.php">EAD TRAVEL</a>
+                    <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
                 </strong>
             </h1>
             <!-- Navbar Home -->

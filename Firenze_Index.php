@@ -31,9 +31,12 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
     if (isset($_SESSION['nama'])) {
         $nama = $_SESSION['nama'];
         echo '<nav class="navbar" style="background-color:' . $_SESSION['warna'] . ';">
-        <a href="Firenze_Index.php">
-            <strong>EAD TRAVEL</strong>
-        </a>
+        <div class="container">
+        <h1>
+            <strong>
+                <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
+            </strong>
+        </h1>
         <div class="menu d-flex">
             <a class="navbar-brand" href="Firenze_Bookings.php">
                 <img src="img/chart.png" width="20" height="20" alt="">
@@ -46,6 +49,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
                 <a class="dropdown-item" href="destroysession.php">Logout</a>
             </div>
         </div>
+        </div
         </div>
     </nav>';
     } else {
@@ -53,7 +57,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
         <div class="container-fluid">
             <h1>
                 <strong>
-                    <a class="navbar-brand" href="Firenze_Index.php">EAD TRAVEL</a>
+                    <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
                 </strong>
             </h1>
             <!-- Navbar Home -->
@@ -91,28 +95,30 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
             foreach ($selected as $row) {
             ?>
                 <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="img/<?php echo $row['gambar'] . '.jpg' ?>" alt="Card image cap">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="img/<?php echo $row['gambar'] . '.jpg' ?>" alt="Card image cap" height="300">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['nama'] . ', ' . $row['tempat'] ?></h5>
                             <p class="card-text"><?php echo $row['deskripsi'] ?></p>
-                            <hr>
+                        </div>
+                        <div class="card-body"><hr>
                             <strong>Rp. <?php echo $row['harga'] ?></strong>
                             <hr>
-                            <?php
-                            $idtiket =  $row['id_tiket'];
-                            if (isset($_SESSION['nama'])) {
+                            <center>
+                                <?php
+                                $idtiket =  $row['id_tiket'];
+                                if (isset($_SESSION['nama'])) {
 
-                                echo '<button class="btn btn-primary" data-toggle="modal" data-target="#pesan' . $idtiket . '">
+                                    echo '<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#pesan' . $idtiket . '">
+                                        Pesan Tiket
+                                        </button>';
+                                } else {
+                                    echo '<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#pesan' . $idtiket . '" disabled>
                                     Pesan Tiket
-                                    </button>';
-                            } else {
-                                echo '<button class="btn btn-primary" data-toggle="modal" data-target="#pesan' . $idtiket . '" disabled>
-                                Pesan Tiket
-                            </button>';
-                            }
-                            ?>
-
+                                </button>';
+                                }
+                                ?>
+                            <center>
                         </div>
                     </div>
                 </div>

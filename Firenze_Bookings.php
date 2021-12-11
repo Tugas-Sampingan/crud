@@ -34,20 +34,24 @@ $result = mysqli_query($koneksi, "SELECT * FROM booking");
     if (isset($_SESSION['nama'])) {
         $nama = $_SESSION['nama'];
         echo '<nav class="navbar" style="background-color:' . $_SESSION['warna'] . ';">
-        <a href="Firenze_Index.php">
-            <strong>EAD TRAVEL</strong>
-        </a>
+        <div class="container">
+        <h1>
+            <strong>
+                <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
+            </strong>
+        </h1>
         <div class="menu d-flex">
-            <a class="navbar-brand" href="Firenze_Bookings.php">
+            <a class="navbar-brand" href="Firenze_Bookings.php" style="text-decoration:none; color:black">
                 <img src="img/chart.png" width="20" height="20" alt="">
             </a>
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $nama . '<span style="color: blue">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="">Profile</a>
+                <a class="dropdown-item" href="Firenze_Profile.php">Profile</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="destroysession.php">Logout</a>
             </div>
+        </div>
         </div>
         </div>
     </nav>';
@@ -56,7 +60,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM booking");
         <div class="container-fluid">
             <h1>
                 <strong>
-                    <a class="navbar-brand" href="Firenze_Index.php">EAD TRAVEL</a>
+                    <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
                 </strong>
             </h1>
             <!-- Navbar Home -->

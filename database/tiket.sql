@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Des 2021 pada 15.21
+-- Waktu pembuatan: 11 Des 2021 pada 02.41
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.3.28
 
@@ -41,7 +41,7 @@ CREATE TABLE `tiket` (
 --
 
 INSERT INTO `tiket` (`id_tiket`, `nama`, `tempat`, `deskripsi`, `harga`, `gambar`) VALUES
-(1, 'Raja Ampat', 'Papua', 'Kepulauan Raja Ampat berada di bagian paling barat Papua dan membentang di area seluas kurang lebih 4,6 juta hektar.\r\nKabupaten Raja Ampat terdiri dari 4 pulau besar yaitu Pulau Waigeo, Batanta, Salawati dan Misool, dan 1.847 pulau-pulau kecil lainnya.', 7000000, 'gambar1'),
+(1, 'Raja Ampat', 'Papua', 'Kepulauan Raja Ampat berada di bagian paling barat Papua dan membentang di area seluas kurang lebih 4,6 juta hektar.\r\nKabupaten Raja Ampat terdiri dari 4 pulau besar dan 1.847 pulau-pulau kecil lainnya.', 7000000, 'gambar1'),
 (2, 'Gunung Bromo', 'Malang', 'Gunung yang memiliki ketinggian 2.392 meter di atas permukaan laut ini merupakan destinasi andalan Jawa Timur. \r\nGunung Bromo berdiri gagah dikelilingi kaldera atau lautan pasir seluas 10 kilometer persegi.', 2000000, 'gambar2'),
 (3, 'Tanah Lot', 'Bali', 'Tanah Lot salah satu pura penting bagi umat Hindu Bali dan lokasi pura terletak di atas batu besar yang berada di lepas pantai. \r\nPura Tanah Lot merupakan ikon pariwisata pulau Bali', 5000000, 'gambar3');
 

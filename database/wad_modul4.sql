@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Generation Time: Nov 28, 2021 at 04:29 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 11 Des 2021 pada 01.50
+-- Versi server: 10.4.19-MariaDB
+-- Versi PHP: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking`
+-- Struktur dari tabel `booking`
 --
 
 CREATE TABLE `booking` (
@@ -39,7 +39,7 @@ CREATE TABLE `booking` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -51,48 +51,52 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `email`, `password`, `no_hp`) VALUES
-(0, 'veve', 'fire@gmail.com', '$2y$10$0tgHiuMm/FsnMnaGYMKXeupnwnFaXY/eMksTb4T4tupctdils7MbW', '1111111'),
-(0, 'firenze', 'imfirenze0109@gmail.com', '082313593108', '$2y$10$xNNl0WQHcjMaNW6BtpVzA.yyTvqqmnWh4kWFDytOjDv'),
-(0, 'popo', 'popo@gmail.com', '$2y$10$0UqZYPFqMmIeEpKtbWqIhuOzUMXDUefqo1aelLiTpG8Wb2wwh39KK', '0000'),
-(0, 'aaa', 'www.@gmail.com', '111', '11111');
+(1, 'Firenze', 'F@gmail.com', '$2y$10$sdcw9k8FFwkfMJQh7pqdgOSNUD6AW0naJ/ODGdoiEOGn2.3v82SuG', '0000000000'),
+(2, 'Diefta', 'D@gmail.com', '$2y$10$pG9wG63uma4ucGQ5s4NH1uWBaqvjIoebQQgc/jr5GwgJBX1LqtnhK', '0000000000');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `booking`
+-- Indeks untuk tabel `booking`
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`,`email`);
+  ADD PRIMARY KEY (`id`,`email`) USING BTREE;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `booking`
+-- AUTO_INCREMENT untuk tabel `booking`
 --
 ALTER TABLE `booking`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `booking`
+-- Ketidakleluasaan untuk tabel `booking`
 --
 ALTER TABLE `booking`
   ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
