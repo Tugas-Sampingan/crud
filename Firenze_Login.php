@@ -89,6 +89,19 @@ if (isset($_POST['login'])) {
     endif;
     ?>
 
+    <?php if (isset($_SESSION['logout'])) : ?>
+        <div class='alert alert-warning alert-dismissible fade show fade in' role='alert'>
+            <?= $_SESSION['logout']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    <?php
+        unset($_SESSION['logout']);
+    endif;
+    ?>
+
     <br>
     <div class="container felx" style="margin-top: 50px;">
         <div class="row justify-content-center">
@@ -141,7 +154,7 @@ if (isset($_POST['login'])) {
             </nav>
         </div>
     </footer>
-    
+
 </body>
 
 </html>

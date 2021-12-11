@@ -96,6 +96,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
         unset($_SESSION['update']);
     }
     ?>
+
     <?php
     foreach ($selected as $row) {
     ?>
@@ -122,19 +123,21 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
                 <div class="form-group mt-3 row">
                     <label class="col-sm-3 col-form-label" for="password"><b>Kata Sandi</b> </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="password" name="password">
+                        <input type="text" class="form-control" id="password" name="password" placeholder="Kata Sandi">
                     </div>
                 </div>
                 <div class="form-group mt-3 row">
                     <label class="col-sm-3 col-form-label" for="konfirmasi_password"><b>Konfirmasi Kata Sandi</b> </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="konfirmasi_password" name="konfirmasi_password">
+                        <input type="text" class="form-control" id="konfirmasi_password" name="konfirmasi_password" placeholder="Konfirmasi Kata Sandi">
                     </div>
                 </div>
                 <div class="form-group mt-3 row">
                     <label class="col-sm-3 col-form-label" for="warna_navbar"><b>Warna Navbar</b> </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="warna_navbar" value="" name="warna_navbar">
+                        <input type="text" class="form-control" id="warna_navbar" value="<?php 
+                        if ($_SESSION['warna'] == "#9ad7db") {echo "Ocean Blue";} 
+                        else { echo "Dark Boba";} ?>" name="warna_navbar">
                     </div>
                 </div>
                 <div class="form-group mt-3">
@@ -164,7 +167,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
             </nav>
         </div>
     </footer>
-    
+
 </body>
 
 </html>

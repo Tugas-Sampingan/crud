@@ -91,6 +91,20 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
     endif;
     ?>
 
+
+    <?php
+    if (isset($_SESSION['pesan'])) {
+        $pesan = $_SESSION['pesan'];
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>' . $pesan . '</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+        unset($_SESSION['pesan']);
+    }
+    ?>
+
     <!-- Header -->
     <div class="container">
         <div class="card mx-auto">
@@ -98,7 +112,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
                 <h1 class="card-title mt-3 text-center">EAD TRAVEL</h1>
             </div>
         </div>
-    </div>
+    </div><br>
     <!-- END HEADER -->
 
     <!-- Card -->
@@ -151,7 +165,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
             <div class="modal fade" id="pesan<?php echo $row['id_tiket'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-body">
                             <p>Tanggal Perjalanan.</p>
                             <input type="date" name="tanggal" style="width: 100%;" class="p-2">
 

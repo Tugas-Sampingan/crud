@@ -28,6 +28,8 @@ foreach ($selected as $row) {
 
 if (isset($_POST['tambah'])) {
     mysqli_query($koneksi, "INSERT INTO booking VALUES('','$id_user', '$namaTempat', '$lokasi', '$harga', '$tanggal')");
+
+    $_SESSION['pesan']="Berhasil pesan!!";
 }
 
 header('location: Firenze_Index.php');
