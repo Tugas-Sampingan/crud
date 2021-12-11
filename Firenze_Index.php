@@ -51,6 +51,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
         </div>
         </div
         </div>
+        <br>
     </nav>';
     } else {
         echo '<nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: ' . $_SESSION['warna'] . ';">
@@ -73,10 +74,12 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
                 </li>
             </ul>
         </div>
+        <br>
     </nav>';
     }
     ?>
     <!-- end NAV -->
+
     <!-- Header -->
     <div class="container">
         <div class="card mx-auto">
@@ -85,7 +88,6 @@ $selected = mysqli_query($koneksi, "SELECT * FROM tiket");
             </div>
         </div>
     </div>
-
     <!-- END HEADER -->
 
     <!-- Card -->

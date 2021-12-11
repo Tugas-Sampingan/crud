@@ -31,7 +31,7 @@ if (isset($_POST['registered'])) { // mulai session
         <div class="container-fluid">
             <h1>
                 <strong>
-                    <a class="navbar-brand" href="Firenze_Index.php">EAD TRAVEL</a>
+                    <a class="navbar-brand" href="Firenze_Index.php" style="text-decoration:none; color:black">EAD TRAVEL</a>
                 </strong>
             </h1>
             <!-- home navbar -->
@@ -110,21 +110,23 @@ if (isset($_POST['registered'])) { // mulai session
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- footer -->
-        <footer class="mt-4">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: auto;">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"> <b>©2021 Copyright : Firenze_1202194019</b></a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </footer>
+    <!-- footer -->
+    <footer class="mt-4">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light fixed top" style="background-color: #C8E3D4;">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: auto;">
+                        <li class="nav-item">
+                             <a class="nav-link active" aria-current="page" href="#"> <b>©2021 Copyright : Firenze_1202194019</b></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </footer>
+    
 </body>
 
 </html>

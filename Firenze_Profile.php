@@ -149,6 +149,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
 
     }
     ?>
+
     <!-- footer -->
     <footer class=" mt-4" data-toggle="modal" data-target="#profileModal">
         <div class="container-fluid">
@@ -163,6 +164,7 @@ $selected = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
             </nav>
         </div>
     </footer>
+    
 </body>
 
 </html>
